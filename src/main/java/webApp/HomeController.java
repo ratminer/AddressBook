@@ -8,16 +8,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * Created by robertfernandes on 2/9/2017.
  */
 @Controller
-public class GreetingController {
+public class HomeController {
 
-    private final GreetingService service;
-
-    public GreetingController(GreetingService service) {
-        this.service = service;
-    }
-
-    @RequestMapping("/greeting")
+    @RequestMapping("/")
     public @ResponseBody String greeting() {
-        return service.greet();
+        return "Hello World!";
     }
 }

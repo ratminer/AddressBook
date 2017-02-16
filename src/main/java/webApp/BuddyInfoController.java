@@ -21,13 +21,14 @@ public class BuddyInfoController {
     }
 
     @PostMapping("/addBuddy")
-    public @ResponseBody String newBuddy(@ModelAttribute BuddyInfo buddyInfo) {
+    public String newBuddy(@ModelAttribute BuddyInfo buddyInfo, Model model) {
+        model.addAttribute("id", buddyInfo.getBuddyId());
         repository.save(buddyInfo);
-        return buddyInfo.toString();
+        return "buddyresult";
     }
 
     @RequestMapping("/buddyInfo/{id}")
-    public @ResponseBody String buddy(@PathVariable int id) {
-        return repository.findByBuddyId(id).toString();
+    public @ResponseBody BuddyInfo buddy(@PathVariable int id) {
+        return repository.findByBuddyId(id);
     }
 }

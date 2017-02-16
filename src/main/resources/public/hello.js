@@ -3,9 +3,14 @@
  */
 $(document).ready(function() {
     $.ajax({
-        url: "http://rest-service.guides.spring.io/greeting"
+        url: "/buddies"
     }).then(function(data) {
-        $('.greeting-id').append(data.id);
-        $('.greeting-content').append(data.content);
+        alert("hello");
+        var names = [];
+        for (var prop in family) {
+            names.push(prop.name);
+            alert(prop.name);
+        }
+        $('.buddy-container').innerHTML = names.join(' ');
     });
 });
